@@ -25,46 +25,24 @@ let addToCart = JSON.parse(localStorage.getItem("addToCart")) || [];
         button2.style.color = "white"
         button2.style.backgroundColor = "pink"
         button2.style.border = "none"
-        
         button1.addEventListener("click",function(){
             data.splice(i,1);
-            //addToCart.push(element);
             localStorage.setItem("addToCart", JSON.stringify(addToCart));
             display(data);
-
         })
-        
-
         card.append(image,description,category,price
         ,button2,button1);
-        cartContainer.append(card);
-        
-        
+        cartContainer.append(card); 
     })
 }
 let pricediv = document.querySelector("#price");
+let count = document.createElement("h2")
+count.textContent = `Total Items in the Cart--- ${addToCart.length}`
 let pricespan = document.createElement("h2")
+
 let sum = 0;
 for(let i=0; i<addToCart.length; i++){
     sum += addToCart[i].price;
 }
-pricespan.innerText=`Total sum of all Items is ${sum}`;
-pricediv.append(pricespan)
-
-
-
-//display(arr)
-//console.log(arr)
-        // let searchform = document.querySelector("form")
-        // let navbar = document.querySelector("#navbar")
-        // //console.log(search)
-        // searchform.addEventListener("submit",function(e){
-        //     e.preventDefault();
-        //     smallContainer.innerHTML = null;
-        //     activeContainer.innerHTML = null;
-        //     navbar.style.position = "relative";
-        //     let inputvalue = searchform.search.value;
-        //     let filtered = arr.filter(function(element){
-        //         if (element.category.toUpperCase().includes(inputvalue.toUpperCase())===true ){
-        //             return true;
-        //         }else{
+pricespan.textContent=`Total sum of all Items--- ${sum}`;
+pricediv.append(count,pricespan)

@@ -1,15 +1,12 @@
 
 var i = 1;
 var images = [];
-// var time = 3000;
-// images[0] = "Images/logo.png"
 images[1] = "Images/w1.jpg"
 images[2] = "Images/w2.jpg"
 images[3] = "Images/w3.jpg"
 images[4] = "Images/w4.jpg"
 images[5] = "Images/w5.jpg"
 images[6] = "Images/w6.jpg"
-//console.log(images)
 slideshow();
 function slideshow(){
     document.slide.src = images[i];
@@ -22,14 +19,12 @@ function slideshow(){
 }
 window.onload = slideshow;
 let activeContainer = document.querySelector("#activeContainer");
-//console.log(activeContainer);
 let arr = [];
 arr[0]= {
     src: "arr/arr0.jpg",
     category: "Shirts",
     description: "Long Sleeve Relaxed Washed Plaid Flannel Button-Down Shirt",
     price: 2000,
-    
 }
 arr[18]= {
     src: "arr/arr1.jpg",

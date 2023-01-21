@@ -8,23 +8,10 @@
        
         logInForm.style.display = 'none';
         signUpForm.style.display = 'block';
-        
-        //loginarray.push(ele);
-        
-        // loginarray.push(ele);
-        // localStorage.setItem("loginarray",JSON.stringify(loginarray));
-
-        //setTimeout(function(){},2000);
-        // setTimeout(function login(){
-        //     console.log("hi")
-        // },3000)
-       
     })
     logIn.addEventListener("click",function(){
         logInForm.style.display = 'block';
-        signUpForm.style.display = 'none';
-        //setTimeout(function(){},2000);
-    
+        signUpForm.style.display = 'none';    
     })
     
      signUpForm.addEventListener("submit",function(ele){
