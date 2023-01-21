@@ -29,6 +29,7 @@ arr[0]= {
     category: "Shirts",
     description: "Long Sleeve Relaxed Washed Plaid Flannel Button-Down Shirt",
     price: 2000,
+    
 }
 arr[18]= {
     src: "arr/arr1.jpg",
@@ -242,10 +243,11 @@ arr[35]= {
 }
 
 let smallContainer = document.querySelector("#smallContainer")
+let addToCart = JSON.parse(localStorage.getItem("addToCart")) || [];
 display(arr);
 function display(data){
 
-    data.forEach(function(element,i){
+    data.forEach(function(element,ind){
         //activeContainer.innerHTML = null;
         // smallContainer.innerHTML = null;
         let card = document.createElement("div");
@@ -257,14 +259,26 @@ function display(data){
         category.textContent = element.category;
         let price = document.createElement("h3");
         price.textContent = `Price: ₹${element.price}`;
-        card.append(image,description,category,price);
+        let button = document.createElement("button")
+        button.innerText = "Add to Cart";
+        button.style.color = "white"
+        button.style.backgroundColor = "pink"
+        button.style.border = "none"
+        button.addEventListener("click",function(){
+            addToCart.push(element);
+            localStorage.setItem("addToCart", JSON.stringify(addToCart))
+
+        })
+
+        card.append(image,description,category,price
+        ,button);
         activeContainer.append(card);
         
         
     })
 }
 //display(arr)
-console.log(arr)
+//console.log(arr)
         let searchform = document.querySelector("form")
         let navbar = document.querySelector("#navbar")
         //console.log(search)
@@ -283,9 +297,4 @@ console.log(arr)
             })
             display(filtered)
         })
-
-
-        //display(arr)
-    
-
-//console.log(activeContainer)
+        
