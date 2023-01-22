@@ -40,23 +40,6 @@
     background-color: rgb(212, 71, 71);
     cursor: pointer;
 }
-/* .button span:after {
-    content: '\00bb';
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    right: -20px;
-    transition: 0.5s;
-  } */
-  
-  /* .button:hover span {
-    padding-right: 25px;
-  } */
-  
-  /* .button:hover span:after {
-    opacity: 1;
-    right: 0;
-  } */
 form{
     width: 25%;
     height: 40%;
