@@ -261,6 +261,8 @@ function display(data){
         button.style.border = "none"
         button.addEventListener("click",function(){
             addToCart.push(element);
+            
+            alert("Added to Cart Successfully");
             localStorage.setItem("addToCart", JSON.stringify(addToCart))
 
         })

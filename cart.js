@@ -1,14 +1,14 @@
 let cartContainer = document.querySelector("#cartContainer");
 let addToCart = JSON.parse(localStorage.getItem("addToCart")) || [];
-    display(addToCart)
-    function display(data){
-        cartContainer.innerHTML = null;
-    data.forEach(function(element,i){
+display(addToCart)
+function display(data) {
+    cartContainer.innerHTML = null;
+    data.forEach(function (element, i) {
         //activeContainer.innerHTML = null;
         // smallContainer.innerHTML = null;
         let card = document.createElement("div");
         let image = document.createElement("img");
-        image.setAttribute("src",element.src)
+        image.setAttribute("src", element.src)
         let description = document.createElement("h3")
         description.innerText = element.description;
         let category = document.createElement("h2");
@@ -25,14 +25,33 @@ let addToCart = JSON.parse(localStorage.getItem("addToCart")) || [];
         button2.style.color = "white"
         button2.style.backgroundColor = "pink"
         button2.style.border = "none"
-        button1.addEventListener("click",function(){
-            data.splice(i,1);
+        button1.addEventListener("click", function () {
+            data.splice(i, 1);
+            alert("Item Has been removed successfully");
             localStorage.setItem("addToCart", JSON.stringify(addToCart));
+            localStorage.setItem("cart", JSON.stringify(addToCart));
             display(data);
+            window.location.reload();
+        });
+        button2.addEventListener("click", function () {
+            var index = i;
+            if (confirm("Are you sure you want to buy this item?")) {
+                // Payment successful
+                alert("Payment successful! Thank you for your purchase!");
+                data.splice(index, 1);
+                localStorage.setItem("addToCart", JSON.stringify(addToCart));
+                localStorage.setItem("cart", JSON.stringify(addToCart));
+
+                display(data);
+
+                window.location.reload();
+            } else {
+                alert("Payment cancelled. Your cart remains unchanged.");
+            }
         })
-        card.append(image,description,category,price
-        ,button2,button1);
-        cartContainer.append(card); 
+        card.append(image, description, category, price
+            , button2, button1);
+        cartContainer.append(card);
     })
 }
 let pricediv = document.querySelector("#price");
@@ -41,8 +60,8 @@ count.textContent = `Total Items in the Cart--- ${addToCart.length}`
 let pricespan = document.createElement("h2")
 
 let sum = 0;
-for(let i=0; i<addToCart.length; i++){
+for (let i = 0; i < addToCart.length; i++) {
     sum += addToCart[i].price;
 }
-pricespan.textContent=`Total sum of all Items--- ${sum}`;
-pricediv.append(count,pricespan)
+pricespan.textContent = `Total sum of all Items--- ${sum}`;
+pricediv.append(count, pricespan)
